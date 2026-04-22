@@ -30,7 +30,7 @@ export function Features() {
       <div className="container">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div className="max-w-xl">
-            <span className="mono-label">// services</span>
+            <span className="mono-label">{"// services"}</span>
             <h2 className="mt-2 text-[clamp(30px,4vw,52px)] font-bold text-ink">
               What we do best.
             </h2>

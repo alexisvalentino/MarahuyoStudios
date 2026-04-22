@@ -36,7 +36,7 @@ export function Cta() {
             {/* Left: message */}
             <div>
               <span className="mono-label !text-bg/60 mb-5 inline-block">
-                // let&apos;s build
+                {"// let&apos;s build"}
               </span>
               <h2 className="mb-4 text-hero font-bold text-bg">
                 Join the <span className="accent-italic">Adventure.</span>
