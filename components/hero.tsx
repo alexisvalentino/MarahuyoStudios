@@ -26,7 +26,7 @@ export function Hero() {
       className="section-hero"
       style={{
         backgroundImage:
-          "radial-gradient(1200px 600px at 80% -10%, hsl(var(--accent) / 0.08), transparent 60%), radial-gradient(900px 500px at -10% 40%, hsl(var(--blue) / 0.06), transparent 60%)",
+          "radial-gradient(1200px 600px at 80% -10%, hsl(var(--accent) / 0.18), transparent 60%), radial-gradient(900px 500px at -10% 40%, hsl(var(--blue) / 0.06), transparent 60%)",
       }}
     >
       {/* Fills space above the marquee; stays centered vertically */}
@@ -36,9 +36,10 @@ export function Hero() {
           <div className="text-center min-[1034px]:text-left">
             <MobileBlobOrbit />
             {/* Hero line using the same sans face as section headings. */}
-            <h1 className="hero-title mb-3 text-[clamp(32px,10vw,82px)] leading-[1.06] tracking-[-0.02em] text-accent sm:mb-4">
+            <h1 className="hero-title mb-3 text-[clamp(24px,7.2vw,60px)] leading-[1.06] tracking-[-0.02em] text-accent sm:mb-4">
               <span className="block font-hero text-ink font-black tracking-[0.02em] uppercase">
-                Tatak Lokal
+                <span>Tatak</span>
+                <span className="ml-[0.24em] inline-block">Lokal</span>
               </span>
             </h1>
 

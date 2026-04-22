@@ -43,17 +43,10 @@ const figtree = Figtree({
  * of waiting for the first hero paint.
  */
 const heroDisplay = localFont({
-  src: "./Priston.otf",
+  src: "./astron-valley.bold-bold.otf",
   variable: "--font-hero-display",
   display: "swap",
   weight: "400",
-  preload: true,
-});
-
-const zeroVelo = localFont({
-  src: "./zerovelo.ttf",
-  variable: "--font-zerovelo",
-  display: "swap",
   preload: true,
 });
 
@@ -95,7 +88,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`dark ${figtree.variable} ${GeistMono.variable} ${heroDisplay.variable} ${zeroVelo.variable}`}
+      className={`dark ${figtree.variable} ${GeistMono.variable} ${heroDisplay.variable}`}
     >
       <body>
         <ThemeProvider
