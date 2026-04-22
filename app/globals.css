@@ -1,0 +1,504 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Sticky nav height — keep in sync with `components/navigation.tsx` */
+    --nav-h: 4.5rem; /* 72px */
+
+    /* Light */
+    --bg: 35 100% 98%;          /* #fffaf5 */
+    --bg-soft: 34 27% 93%;      /* #f2efeb */
+    --ink: 0 0% 6%;             /* #0f0f0f */
+    --ink-2: 0 0% 10%;
+    --muted: 0 0% 42%;          /* #6b6b6b */
+    --border: 33 23% 89%;       /* #e8e3dc */
+    --accent: 11 100% 50%;      /* #ff2f00 */
+    --accent-ink: 35 100% 98%;  /* #fffaf5 */
+    --blue: 220 100% 50%;       /* #0051ff */
+  }
+
+  .dark {
+    --bg: 0 0% 5%;              /* #0d0d0d */
+    --bg-soft: 0 0% 9%;         /* #171717 */
+    --ink: 35 100% 98%;         /* #fffaf5 */
+    --ink-2: 35 100% 94%;
+    --muted: 0 0% 60%;          /* #999999 */
+    --border: 0 0% 16%;         /* #292929 */
+    --accent: 11 100% 55%;
+    --accent-ink: 0 0% 6%;
+    --blue: 210 100% 60%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Ensure hash targets land at section start, not showing previous section. */
+  section[id] {
+    scroll-margin-top: calc(var(--nav-h) + 2px);
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    font-feature-settings: "ss01", "ss02";
+  }
+
+  ::selection {
+    @apply bg-accent text-accent-ink;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /*
+   * Mobile menu state: blur/dim the page content layer (hero + sections +
+   * footer) while the nav drawer is open. This is more reliable than
+   * relying on backdrop-filter alone, which can be inconsistent depending
+   * on browser/compositing path.
+   */
+  @media (max-width: 1033px) {
+    body.mobile-menu-open main,
+    body.mobile-menu-open footer {
+      filter: brightness(0);
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+      transition: filter 220ms ease, opacity 220ms ease;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center gap-2.5 whitespace-nowrap rounded-full
+           px-5 py-3 text-[14px] font-semibold leading-none sm:px-[22px] sm:py-[14px] sm:text-[15px]
+           transition-all duration-200 ease-out;
+    letter-spacing: -0.01em;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-accent-ink hover:bg-ink hover:text-bg;
+  }
+
+  .btn-dark {
+    @apply bg-ink text-bg hover:bg-accent hover:text-accent-ink;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-ink border border-ink/15 hover:bg-ink hover:text-bg;
+  }
+
+  .btn-ghost-light {
+    @apply bg-transparent text-bg border border-bg/25 hover:bg-bg hover:text-ink;
+  }
+
+  .btn-lg {
+    @apply px-7 py-[18px] text-base;
+  }
+
+  .btn .arrow {
+    @apply transition-transform duration-300 ease-out;
+  }
+
+  .btn:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Service accordion toggle — direct visual match to sample */
+  .service-toggle {
+    margin: 4px;
+    display: inline-block;
+    box-shadow:
+      inset 0 0 20px 3px rgba(0, 0, 0, 0.25),
+      inset 0 1.2px 0.6px 0.6px rgba(255, 255, 255, 0.9),
+      inset 0 -1.2px 0.6px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    background: #ccd0d4;
+    position: relative;
+    height: 84px;
+    width: 84px;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .service-toggle::before {
+    box-shadow: 0 0 10px 5px #fff;
+    border-radius: 999px;
+    background: #fff;
+    position: absolute;
+    margin-left: -30px;
+    margin-top: -30px;
+    opacity: 0.2;
+    content: "";
+    height: 60px;
+    width: 60px;
+    left: 50%;
+    top: 50%;
+  }
+
+  .service-toggle .button {
+    filter: blur(0.7px);
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow:
+      0 9px 15px -3px rgba(0, 0, 0, 0.5),
+      inset 0 -2px 3px -1px rgba(0, 0, 0, 0.2),
+      0 -6px 9px -1px rgba(255, 255, 255, 0.6),
+      inset 0 2px 3px -1px rgba(255, 255, 255, 0.2),
+      inset 0 0 3px 1px rgba(255, 255, 255, 0.8),
+      inset 0 12px 18px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    position: absolute;
+    background: #ccd0d4;
+    margin-left: -29px;
+    margin-top: -29px;
+    display: block;
+    height: 58px;
+    width: 58px;
+    left: 50%;
+    top: 50%;
+  }
+
+  .service-toggle .label {
+    transition: color 300ms ease-out, font-size 200ms ease-out;
+    text-shadow:
+      1px 1px 3px #ccd0d4,
+      0 0 0 rgba(0, 0, 0, 0.8),
+      1px 1px 4px #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    font-size: 28px;
+    display: grid;
+    place-items: center;
+    line-height: 1;
+    opacity: 0.9;
+    height: 100%;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+  }
+
+  .service-toggle:active .button {
+    box-shadow:
+      0 9px 15px -3px rgba(0, 0, 0, 0.4),
+      inset 0 -5px 18px 1px rgba(255, 255, 255, 0.9),
+      0 -6px 9px -1px rgba(255, 255, 255, 0.6),
+      inset 0 5px 15px 0 rgba(0, 0, 0, 0.4),
+      inset 0 0 6px 1px rgba(255, 255, 255, 0.6);
+  }
+
+  .service-toggle:active .label {
+    font-size: 26px;
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  .service-toggle[data-open="true"] .button {
+    box-shadow:
+      0 9px 15px -3px rgba(0, 0, 0, 0.4),
+      inset 0 -5px 15px -1px rgba(255, 255, 255, 0.9),
+      0 -6px 9px -1px rgba(255, 255, 255, 0.6),
+      inset 0 5px 12px 0 rgba(0, 0, 0, 0.2),
+      inset 0 0 3px 1px rgba(255, 255, 255, 0.6);
+  }
+
+  .service-toggle[data-open="true"] .label {
+    font-size: 26px;
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  /* Compact variant for single master toggle in services header */
+  .service-toggle.service-toggle--compact {
+    height: 62px;
+    width: 62px;
+  }
+
+  .service-toggle.service-toggle--compact::before {
+    height: 44px;
+    width: 44px;
+    margin-left: -22px;
+    margin-top: -22px;
+  }
+
+  .service-toggle.service-toggle--compact .button {
+    height: 42px;
+    width: 42px;
+    margin-left: -21px;
+    margin-top: -21px;
+  }
+
+  .service-toggle.service-toggle--compact .label {
+    font-size: 22px;
+  }
+
+  .service-toggle.service-toggle--compact[data-open="true"] .label,
+  .service-toggle.service-toggle--compact:active .label {
+    font-size: 20px;
+  }
+
+  /* Mobile nav hamburger — neumorphic "pillow" style */
+  .menuButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 13%;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5em;
+    background: #171717;
+    border: 1px solid #171717;
+    transition: all 0.3s;
+    box-shadow:
+      inset 4px 4px 12px #3a3a3a,
+      inset -4px -4px 12px #000000;
+    color: #c8c8c8;
+    position: relative;
+    padding: 0;
+  }
+
+  .menuButton:hover {
+    border: 1px solid #000;
+  }
+
+  .menuButton:active {
+    color: #666;
+    box-shadow:
+      6px 6px 12px #3a3a3a,
+      -6px -6px 12px #000000;
+  }
+
+  .menuButton span {
+    width: 18px;
+    height: 2.5px;
+    background: rgb(200, 200, 200);
+    border-radius: 100px;
+    transition: 0.3s ease;
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: center;
+  }
+
+  .menuButton span.top {
+    transform: translate(-50%, calc(-50% - 6px));
+  }
+
+  .menuButton span.mid {
+    transform: translate(-50%, -50%);
+  }
+
+  .menuButton span.bot {
+    transform: translate(-50%, calc(-50% + 6px));
+  }
+
+  .menuButton[data-open="true"] span.top {
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 22px;
+  }
+
+  .menuButton[data-open="true"] span.bot {
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 22px;
+    box-shadow: 0 0 10px #495057;
+  }
+
+  .menuButton[data-open="true"] span.mid {
+    transform: translate(calc(-50% - 10px), -50%);
+    opacity: 0;
+  }
+
+  .mono-label {
+    @apply font-mono text-xs uppercase tracking-[0.08em] text-muted;
+  }
+
+  .accent-italic {
+    @apply font-semibold text-accent;
+    letter-spacing: -0.02em;
+  }
+
+  /*
+   * .font-hero — hand-written CSS class (not a Tailwind utility) that
+   * applies the current display face to the hero wordmark.
+   *
+   * The variable `--font-hero-display` is declared in app/layout.tsx
+   * via next/font/local and is face-agnostic on purpose: swapping the
+   * display font is a one-line edit in layout.tsx, no changes needed
+   * here or at the call site.
+   *
+   * Why hand-written instead of Tailwind `fontFamily.hero`:
+   *   The Tailwind variant needs `tailwind.config.ts` + a dev-server
+   *   restart to register. In production that's fine; in dev it's a
+   *   common source of "my font didn't apply" bugs. Writing the rule
+   *   directly in globals.css means the class works as soon as the
+   *   CSS is parsed, no build-step regeneration required.
+   *
+   * Fallback chain — if the local OTF fails for any reason (network
+   * filter, corrupt file, unsupported glyph), the browser falls back
+   * to Figtree, then system sans. The heading is always visible and
+   * always looks reasonable.
+   */
+  .font-hero {
+    font-family:
+      var(--font-hero-display),
+      var(--font-figtree),
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+  }
+
+  .font-zerovelo {
+    font-family:
+      var(--font-zerovelo),
+      var(--font-figtree),
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+  }
+
+  /*
+   * Full-viewport on desktop (lg+) only. Below lg the section flows at
+   * its natural height so content never gets clipped on mobile/tablet.
+   */
+  .section-screen {
+    @apply relative flex w-full flex-col justify-center
+           py-14 md:py-16;
+  }
+
+  @media (min-width: 1034px) {
+    .section-screen {
+      @apply min-h-screen py-28;
+    }
+  }
+
+  /*
+   * Hero: exactly one viewport below the sticky nav — content is vertically
+   * centered; the marquee sits flush on the bottom edge (see `components/hero.tsx`).
+   */
+  .section-hero {
+    @apply relative flex w-full flex-col overflow-hidden bg-bg;
+    min-height: calc(100svh - var(--nav-h));
+  }
+
+  @supports (height: 100dvh) {
+    .section-hero {
+      min-height: calc(100dvh - var(--nav-h));
+    }
+  }
+
+  /* iPad portrait and similar tablet widths */
+  @media (max-width: 768px) {
+    .section-screen {
+      @apply py-12;
+    }
+
+    .hero-inner {
+      @apply py-5;
+    }
+
+    .hero-title {
+      font-size: clamp(34px, 8vw, 56px);
+    }
+
+    .hero-subtitle {
+      @apply text-[17px];
+    }
+  }
+
+  /* Keep hero in compact/mobile style through iPad-ish widths */
+  @media (max-width: 1033px) {
+    .hero-mobile-blob {
+      --hero-mobile-blob-size: clamp(170px, 36vw, 250px);
+      width: var(--hero-mobile-blob-size);
+    }
+
+    .hero-actions .btn {
+      @apply w-auto shrink-0 px-4 py-2.5 text-[14px];
+      min-width: 128px;
+    }
+  }
+
+  /* iPhone 12/13/14 width and smaller */
+  @media (max-width: 390px) {
+    .section-screen {
+      @apply py-10;
+    }
+
+    .hero-inner {
+      @apply py-3;
+    }
+
+    .hero-grid {
+      @apply gap-5;
+    }
+
+    .hero-title {
+      font-size: clamp(31px, 9.6vw, 40px);
+      line-height: 1.04;
+    }
+
+    .hero-subtitle {
+      @apply mb-4 text-[15px];
+    }
+
+    .hero-actions {
+      @apply gap-2;
+    }
+
+    .hero-mobile-blob {
+      --hero-mobile-blob-size: clamp(160px, 56vw, 220px);
+      @apply mt-4;
+    }
+  }
+
+  /* Very small Android widths */
+  @media (max-width: 320px) {
+    .section-screen {
+      @apply py-8;
+    }
+
+    .hero-inner {
+      @apply px-3 py-2;
+    }
+
+    .hero-title {
+      font-size: 28px;
+      line-height: 1.03;
+    }
+
+    .hero-subtitle {
+      @apply mb-3 text-[14px];
+    }
+
+    .hero-actions .btn {
+      @apply px-3.5 py-2 text-[13px];
+      min-width: 118px;
+    }
+
+    .hero-mobile-blob {
+      --hero-mobile-blob-size: clamp(148px, 58vw, 180px);
+      @apply mt-3;
+    }
+  }
+}
