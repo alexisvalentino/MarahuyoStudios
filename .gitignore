@@ -30,10 +30,29 @@ yarn-error.log*
 
 # env files (NEVER commit)
 .env
+.env.*
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+!.env.example
+!.env.*.example
+
+# secrets and credentials
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.jks
+*.keystore
+*.mobileprovision
+
+# local databases and dumps
+*.db
+*.sqlite
+*.sqlite3
+*.sql
 
 # typescript
 *.tsbuildinfo
