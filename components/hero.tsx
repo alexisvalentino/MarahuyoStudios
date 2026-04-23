@@ -44,7 +44,7 @@ export function Hero() {
             </h1>
 
             <p className="hero-subtitle mx-auto mb-5 max-w-[560px] text-base font-medium leading-[1.35] text-ink-2 [letter-spacing:-0.015em] sm:mb-6 sm:text-lg md:text-xl min-[1034px]:mx-0">
-              Next-gen mobile apps for real-world challenges.
+              Built for impact.
             </p>
 
             <div className="hero-actions flex flex-nowrap justify-center gap-2.5 sm:gap-3 min-[1034px]:justify-start">
