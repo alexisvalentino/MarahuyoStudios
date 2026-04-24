@@ -136,7 +136,7 @@ export function TerrainGrid() {
     <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
       {/* The Retro Sun */}
       <div 
-        className="absolute left-1/2 top-[40%] h-[80vw] w-[80vw] md:h-[50vw] md:w-[50vw] max-h-[400px] max-w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-100"
+        className="absolute left-1/2 top-[40%] h-[80vw] w-[80vw] md:h-[50vw] md:w-[50vw] max-h-[400px] max-w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-100 blur-xl md:blur-0"
         style={{
           background: "linear-gradient(to bottom, #ffea00 0%, #ff5e00 45%, #e60000 100%)",
           boxShadow: "0 0 120px 20px rgba(255, 94, 0, 0.2)",
