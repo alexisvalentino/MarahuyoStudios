@@ -36,14 +36,13 @@ export function Cta() {
             {/* Left: message */}
             <div>
               <span className="mono-label !text-bg/60 mb-5 inline-block">
-                {"// let&apos;s build"}
+                {"// initiate"}
               </span>
-              <h2 className="mb-4 text-hero font-bold text-bg">
-                Join the <span className="accent-italic">Adventure.</span>
+              <h2 className="mb-4 font-hero text-[clamp(32px,4vw,54px)] leading-[1] font-bold text-bg uppercase tracking-wide">
+                Build the <span className="text-accent">Future.</span>
               </h2>
               <p className="mb-6 max-w-md text-lg text-bg/70 md:text-xl">
-                Let&apos;s talk projects. Tell us what you&apos;re building and
-                we&apos;ll get back within 24 hours.
+                Ready to scale your digital presence? Tell us about your vision, and our architects will be in touch within 24 hours.
               </p>
               <div className="flex flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-[0.06em] text-bg/55">
                 <span>hello@marahuyo.studio</span>
