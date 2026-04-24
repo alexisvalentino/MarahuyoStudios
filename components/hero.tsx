@@ -5,18 +5,20 @@ import * as React from "react";
 import type { CSSProperties } from "react";
 import { HeroBlob } from "./hero-blob";
 
+
+
 const MARQUEE_ITEMS = [
-  "Mobile Apps",
-  "Game-Driven UX",
-  "Product Engineering",
-  "Pixel-Perfect UI",
+  "Full-Stack Mastery",
+  "Enterprise-Grade Architecture",
+  "Cloud-Native Systems",
+  "Precision Engineering",
   "Marahuyo Studios",
 ];
 
 const STATS = [
-  { value: "∞", label: "Pixels polished" },
-  { value: "24/7", label: "Technophiles on call" },
-  { value: "< 24h", label: "Response time" },
+  { value: "∞", label: "Precision" },
+  { value: "Elite", label: "Engineering Team" },
+  { value: "< 24h", label: "Delivery Cycles" },
 ];
 
 export function Hero() {
@@ -44,15 +46,15 @@ export function Hero() {
             </h1>
 
             <p className="hero-subtitle mx-auto mb-5 max-w-[560px] text-base font-medium leading-[1.35] text-ink-2 [letter-spacing:-0.015em] sm:mb-6 sm:text-lg md:text-xl min-[1034px]:mx-0">
-              Built for impact.
+              Architecting the future of digital experiences. We engineer high-performance software for the next generation of startups and enterprises.
             </p>
 
             <div className="hero-actions flex flex-nowrap justify-center gap-2.5 sm:gap-3 min-[1034px]:justify-start">
               <a href="#contact" className="btn btn-accent justify-center">
-                Get Started <ArrowRight size={16} className="arrow" />
+                Initiate Project <ArrowRight size={16} className="arrow" />
               </a>
-              <a href="#services" className="btn btn-ghost justify-center">
-                Our Work <ArrowUpRight size={16} className="arrow" />
+              <a href="#work" className="btn btn-ghost justify-center">
+                View Portfolio <ArrowUpRight size={16} className="arrow" />
               </a>
             </div>
           </div>
@@ -68,7 +70,7 @@ export function Hero() {
       <div className="border-y border-[#d8d2ca] bg-[#f7f2eb] py-2.5 sm:py-4">
         <div className="overflow-hidden">
           <div className="flex w-max animate-marquee">
-            {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, idx) => (
+            {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, idx) => (
               <span
                 key={`${item}-${idx}`}
                 className="shrink-0 px-5 font-mono text-xs uppercase tracking-[0.12em] text-[#201f1d] sm:px-6 sm:text-sm"

@@ -5,6 +5,8 @@ import { ArrowRight } from "lucide-react";
 
 const LINKS = [
   { href: "#services", label: "Services" },
+  { href: "#work", label: "Work" },
+  { href: "#process", label: "Process" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ] as const;
@@ -33,8 +35,11 @@ export function Navigation() {
   }, [open]);
 
   // Active section tracking via IntersectionObserver
+  const isScrollingRef = React.useRef(false);
+  const scrollTimeoutRef = React.useRef<NodeJS.Timeout>();
+
   React.useEffect(() => {
-    const ids = ["top", "services", "about", "contact"];
+    const ids = ["top", "services", "work", "process", "about", "contact"];
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
@@ -42,11 +47,13 @@ export function Navigation() {
 
     const io = new IntersectionObserver(
       (entries) => {
+        if (isScrollingRef.current) return;
+        
         entries.forEach((entry) => {
           if (entry.isIntersecting) setActive(entry.target.id);
         });
       },
-      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+      { rootMargin: "-100px 0px -60% 0px", threshold: 0 }
     );
     sections.forEach((s) => io.observe(s));
     return () => io.disconnect();
@@ -54,9 +61,18 @@ export function Navigation() {
 
   const closeAnd = (href: string) => () => {
     setOpen(false);
-    // Let the browser handle the hash change naturally
     if (href.startsWith("#")) {
-      const el = document.getElementById(href.slice(1));
+      const id = href.slice(1);
+      setActive(id);
+      
+      // Prevent observer from overriding the active state during smooth scroll
+      isScrollingRef.current = true;
+      clearTimeout(scrollTimeoutRef.current);
+      scrollTimeoutRef.current = setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 1000); // Allow 1s for the smooth scroll to finish
+
+      const el = document.getElementById(id);
       if (el) {
         setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 10);
       }
@@ -112,7 +128,7 @@ export function Navigation() {
             onClick={closeAnd("#contact")}
             className="btn btn-accent hidden min-[1034px]:inline-flex"
           >
-            Get Started <ArrowRight size={16} className="arrow" />
+            Initiate Project <ArrowRight size={16} className="arrow" />
           </a>
           <button
             type="button"
@@ -177,7 +193,7 @@ export function Navigation() {
               open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
             ].join(" ")}
           >
-            Get Started <ArrowRight size={16} className="arrow" />
+            Initiate Project <ArrowRight size={16} className="arrow" />
           </a>
         </nav>
       </div>

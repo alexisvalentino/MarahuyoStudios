@@ -12,9 +12,9 @@ const COLS = [
   {
     h: "Solutions",
     items: [
-      { label: "Mobile Apps", href: "#services" },
-      { label: "Consulting", href: "#services" },
-      { label: "Case Studies", href: "#services" },
+      { label: "Web & Mobile", href: "#services" },
+      { label: "Our Process", href: "#process" },
+      { label: "Portfolio", href: "#work" },
     ],
   },
   {
@@ -45,8 +45,7 @@ export function Footer() {
             Marahuyo Studios<sup className="ml-0.5 text-[0.55em] text-muted">®</sup>
           </div>
           <p className="mt-4 max-w-[40ch] text-[15px] leading-relaxed text-muted">
-            Next-gen mobile apps for real-world challenges. Designed and
-            engineered with a game-driven touch.
+            Architecting the future of digital experiences. We engineer high-performance software for the next generation of startups and enterprises.
           </p>
         </div>
 
