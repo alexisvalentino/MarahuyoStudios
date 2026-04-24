@@ -501,4 +501,12 @@
       @apply mt-3;
     }
   }
+
+  /* Specific fix for tall mobile screens (iPhone 12 Pro, XR, Pixel 7) 
+     to prevent the hero header from overlapping the mobile blob. */
+  @media (min-width: 380px) and (max-width: 430px) and (min-height: 800px) {
+    .hero-mobile-blob {
+      margin-bottom: 3.5rem !important; /* Increase space to lower the header */
+    }
+  }
 }

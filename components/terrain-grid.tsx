@@ -79,6 +79,16 @@ export function TerrainGrid() {
     const render = () => {
       time += speed;
       
+      // Calculate responsive parameters for smooth transition between mobile and desktop.
+      // Desktop & iPad (>= 768px): t = 1 (Original waves)
+      // Mobile phones (<= 430px): t = 0 (Subtle waves, narrower flat path)
+      const t = Math.max(0, Math.min(1, (window.innerWidth - 430) / (768 - 430)));
+      
+      // Interpolate path width (2.5 on mobile, 6 on desktop)
+      const pathWidth = 2.5 + t * 3.5;
+      // Interpolate amplitude (60% height on mobile, 100% on desktop)
+      const amplitudeScale = 0.6 + t * 0.4;
+      
       const positions = geometry.attributes.position.array;
       let zIndex = 0;
       
@@ -90,13 +100,13 @@ export function TerrainGrid() {
         const distanceX = Math.abs(x);
         let y = 0;
         
-        // Central flat path, mountains on sides
-        if (distanceX > 6) {
-          const mountainStrength = Math.min(1, (distanceX - 6) / 15);
+        // Central flat path, mountains on sides adapted for screen size
+        if (distanceX > pathWidth) {
+          const mountainStrength = Math.min(1, (distanceX - pathWidth) / 15);
           let noise = Math.sin(x * 0.4) + Math.cos(movingZ * 0.4);
           noise += Math.sin(x * 0.1) * 2;
           noise += Math.cos(movingZ * 0.2) * 3;
-          y = Math.max(0, noise) * 2 * mountainStrength;
+          y = Math.max(0, noise) * 2 * mountainStrength * amplitudeScale;
         }
         
         positions[i + 1] = y;
