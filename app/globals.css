@@ -42,7 +42,7 @@
 
   /* Ensure hash targets land at section start, not showing previous section. */
   section[id] {
-    scroll-margin-top: calc(var(--nav-h) + 2px);
+    scroll-margin-top: calc(var(--nav-h) - 1px);
   }
 
   body {
