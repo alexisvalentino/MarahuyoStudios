@@ -37,7 +37,7 @@ export function Hero() {
           {/* Left: heading + CTAs */}
           <div className="text-center min-[1034px]:text-left">
             <MobileBlobOrbit />
-            <h1 className="hero-title mb-3 text-[clamp(36px,7vw,76px)] leading-[1.06] tracking-[-0.02em] text-accent sm:mb-4">
+            <h1 className="hero-title mb-3 text-[clamp(36px,7vw,76px)] min-[1034px]:text-[clamp(56px,5.5vw,68px)] leading-[1.06] tracking-[-0.02em] text-accent sm:mb-4">
               <span className="block font-hero text-ink font-normal tracking-[0.02em] uppercase">
                 <span>Tatak</span>
                 <span className="ml-[0.24em] inline-block">Lokal</span>
@@ -110,7 +110,7 @@ function MobileBlobOrbit() {
   return (
     <div
       ref={blobRef}
-      className="hero-mobile-blob relative mx-auto mb-4 aspect-square min-[1034px]:hidden"
+      className="hero-mobile-blob relative mx-auto mb-4 aspect-square hidden md:block min-[1034px]:hidden"
     >
       <HeroBlob className="absolute inset-0" />
       <OrbitStats orbitRadius={orbitRadius} compact />
