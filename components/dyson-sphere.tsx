@@ -7,7 +7,8 @@ export function DysonSphere() {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    const el = mountRef.current;
+    if (!el) return;
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -15,7 +16,7 @@ export function DysonSphere() {
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
       45, 
-      mountRef.current.clientWidth / mountRef.current.clientHeight, 
+      el.clientWidth / el.clientHeight, 
       0.1, 
       1000
     );
@@ -26,9 +27,9 @@ export function DysonSphere() {
 
     // Renderer setup
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+    renderer.setSize(el.clientWidth, el.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    mountRef.current.appendChild(renderer.domElement);
+    el.appendChild(renderer.domElement);
 
     // Dyson Sphere Geometry - Group
     const group = new THREE.Group();
@@ -79,10 +80,10 @@ export function DysonSphere() {
 
     // Resize handler
     const handleResize = () => {
-      if (!mountRef.current) return;
-      camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
+      if (!el) return;
+      camera.aspect = el.clientWidth / el.clientHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+      renderer.setSize(el.clientWidth, el.clientHeight);
     };
     window.addEventListener("resize", handleResize);
 
@@ -90,8 +91,8 @@ export function DysonSphere() {
     return () => {
       window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationFrameId);
-      if (mountRef.current && mountRef.current.contains(renderer.domElement)) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (el && el.contains(renderer.domElement)) {
+        el.removeChild(renderer.domElement);
       }
       
       // Dispose Geometries and Materials
