@@ -407,6 +407,19 @@
     }
   }
 
+  /* Base desktop hero title — scales down via breakpoints below */
+  .hero-title {
+    font-size: clamp(3.5rem, 5vw, 4.5rem);
+  }
+
+  /* Keep hero buttons compact through tablet widths */
+  @media (max-width: 1033px) {
+    .hero-actions .btn {
+      @apply w-auto shrink-0 px-4 py-2.5 text-[14px];
+      min-width: 128px;
+    }
+  }
+
   /* iPad portrait and similar tablet widths */
   @media (max-width: 768px) {
     .section-screen {
@@ -418,61 +431,52 @@
     }
 
     .hero-title {
-      font-size: clamp(34px, 8vw, 56px);
+      font-size: clamp(2rem, 6vw, 3rem);
     }
 
     .hero-subtitle {
-      @apply text-[17px];
+      @apply text-[15px];
     }
   }
 
-  /* Keep hero in compact/mobile style through iPad-ish widths */
-  @media (max-width: 1033px) {
-    .hero-mobile-blob {
-      --hero-mobile-blob-size: clamp(170px, 36vw, 250px);
-      width: var(--hero-mobile-blob-size);
-    }
-
-    .hero-actions .btn {
-      @apply w-auto shrink-0 px-4 py-2.5 text-[14px];
-      min-width: 128px;
-    }
-  }
-
-  /* iPhone 12/13/14 width and smaller */
-  @media (max-width: 390px) {
-    .section-screen {
-      @apply py-10;
-    }
-
-    .hero-inner {
-      @apply py-3;
-    }
-
-    .hero-grid {
-      @apply gap-5;
-    }
-
+  /* Standard phones: iPhone 12-15, Pixel 7, Galaxy S series */
+  @media (max-width: 430px) {
     .hero-title {
-      font-size: clamp(31px, 9.6vw, 40px);
-      line-height: 1.04;
+      font-size: clamp(1.75rem, 7.5vw, 2.5rem);
+      line-height: 1.08;
     }
 
     .hero-subtitle {
-      @apply mb-4 text-[15px];
+      @apply mb-4 text-[14px];
     }
 
     .hero-actions {
       @apply gap-2;
     }
+  }
 
-    .hero-mobile-blob {
-      --hero-mobile-blob-size: clamp(160px, 56vw, 220px);
-      @apply mt-4;
+  /* Small phones: iPhone SE, older Androids */
+  @media (max-width: 375px) {
+    .hero-inner {
+      @apply px-3 py-3;
+    }
+
+    .hero-title {
+      font-size: clamp(1.5rem, 7vw, 2rem);
+      line-height: 1.04;
+    }
+
+    .hero-subtitle {
+      @apply mb-3 text-[13px];
+    }
+
+    .hero-actions .btn {
+      @apply px-3 py-2 text-[13px];
+      min-width: 110px;
     }
   }
 
-  /* Very small Android widths */
+  /* Tiny screens: Galaxy Fold, very small Android */
   @media (max-width: 320px) {
     .section-screen {
       @apply py-8;
@@ -483,30 +487,18 @@
     }
 
     .hero-title {
-      font-size: 28px;
+      font-size: 1.35rem;
       line-height: 1.03;
     }
 
     .hero-subtitle {
-      @apply mb-3 text-[14px];
+      @apply mb-3 text-[12px];
     }
 
     .hero-actions .btn {
-      @apply px-3.5 py-2 text-[13px];
-      min-width: 118px;
-    }
-
-    .hero-mobile-blob {
-      --hero-mobile-blob-size: clamp(148px, 58vw, 180px);
-      @apply mt-3;
+      @apply px-2.5 py-1.5 text-[12px];
+      min-width: 100px;
     }
   }
 
-  /* Specific fix for tall mobile screens (iPhone 12 Pro, XR, Pixel 7) 
-     to prevent the hero header from overlapping the mobile blob. */
-  @media (min-width: 380px) and (max-width: 430px) and (min-height: 800px) {
-    .hero-mobile-blob {
-      margin-bottom: 3.5rem !important; /* Increase space to lower the header */
-    }
-  }
 }
