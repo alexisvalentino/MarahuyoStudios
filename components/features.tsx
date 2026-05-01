@@ -30,7 +30,7 @@ const ITEMS: Feature[] = [
 
 export function Features() {
   return (
-    <section id="services" className="section-screen bg-bg">
+    <section id="services" className="section-screen border-t border-border bg-bg">
       <div className="container">
         <div className="flex flex-col gap-16 md:gap-24 lg:flex-row lg:justify-between">
           <div className="max-w-xl lg:max-w-md">
