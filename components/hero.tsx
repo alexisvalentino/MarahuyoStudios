@@ -11,14 +11,14 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="section-hero relative"
+      className="section-hero relative overflow-hidden"
       style={{
         backgroundImage:
           "radial-gradient(1200px 600px at 80% -10%, hsl(var(--accent) / 0.18), transparent 60%), radial-gradient(900px 500px at -10% 40%, hsl(var(--blue) / 0.06), transparent 60%)",
       }}
     >
-      {/* Background Blob - Hidden on mobile, visible on tablets and up */}
-      <div className="absolute inset-0 m-auto hidden sm:block w-full max-w-[800px] aspect-square pointer-events-none">
+      {/* Background Blob - Adjusted for mobile visibility */}
+      <div className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 w-[160%] sm:w-full max-w-[800px] aspect-square pointer-events-none opacity-40 sm:opacity-100 sm:inset-0 sm:m-auto sm:translate-x-0 sm:translate-y-0 mix-blend-screen">
         <HeroBlob className="absolute inset-0" />
       </div>
 
