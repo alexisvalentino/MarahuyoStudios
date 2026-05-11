@@ -93,11 +93,16 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(18px)" },
           to: { opacity: "1", transform: "none" },
         },
+        scan: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(100%)" },
+        },
       },
       animation: {
         "pulse-dot": "pulse 2s ease-in-out infinite",
         marquee: "scroll 38s linear infinite",
         reveal: "reveal 0.8s cubic-bezier(0.2,0.7,0.2,1) both",
+        scan: "scan 2s linear infinite",
       },
     },
   },

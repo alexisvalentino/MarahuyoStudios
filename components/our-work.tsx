@@ -25,50 +25,35 @@ const PROJECTS = [
     description: "Built an automated content repurposing pipeline that turns 1 podcast into 30+ clips, articles, and Meta ad variations.",
     tags: ["Higgsfield", "Claude 3", "Activepieces"],
   },
-  {
-    id: "matrix",
-    title: "LeadGen Matrix",
-    category: "AI Sales & Ads",
-    description: "Engineered a dynamic ad-generation workflow that automatically A/B tests generated visuals, decreasing CPA by 65%.",
-    tags: ["Midjourney", "Meta API", "DALL-E 3"],
-  },
-  {
-    id: "pulse",
-    title: "Pulse Sonic ID",
-    category: "Custom Audio Branding",
-    description: "Produced a suite of 50+ unique sonic brand identities and AI voiceovers for an enterprise marketing firm in record time.",
-    tags: ["Suno AI", "ElevenLabs", "Logic Pro"],
-  },
-  {
-    id: "founder",
-    title: "Founder Stack MVP",
-    category: "Full-Stack AI SaaS",
-    description: "Designed and launched a fully functional AI-powered SaaS product for a non-technical founder in just 14 days.",
-    tags: ["Next.js", "Vercel AI SDK", "Supabase"],
-  },
 ];
 
 function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
   return (
-    <article className="group flex flex-col justify-between border border-accent p-5 transition-colors hover:bg-accent/5 h-full">
-      <div>
+    <article className="group relative overflow-hidden flex flex-col justify-between border border-accent/40 p-5 transition-all duration-500 hover:border-accent hover:bg-accent/5 hover:shadow-[0_0_30px_-5px_rgba(255,47,0,0.2)] h-full">
+      
+      {/* Scanner Line Animation */}
+      <div className="pointer-events-none absolute inset-0 -translate-y-full bg-gradient-to-b from-transparent via-accent/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:animate-scan group-hover:opacity-100" />
+
+      <div className="relative z-10">
         <div className="mb-4 flex justify-between">
-          <span className="font-mono text-[11px] font-bold text-accent">[{project.id.toUpperCase()}]</span>
-          <ArrowUpRight className="text-accent transition-colors group-hover:scale-110" size={16} />
+          <span className="font-mono text-[11px] font-bold text-accent transition-all duration-300 group-hover:tracking-[0.2em] group-hover:text-ink">
+            [{project.id.toUpperCase()}]
+          </span>
+          <ArrowUpRight className="text-accent transition-all duration-300 group-hover:scale-125 group-hover:text-ink group-hover:rotate-12" size={16} />
         </div>
-        <h3 className="text-lg font-bold uppercase tracking-tight text-ink mb-1.5">
+        <h3 className="text-lg font-bold uppercase tracking-tight text-ink mb-1.5 transition-colors duration-300 group-hover:text-accent">
           {project.title}
         </h3>
-        <p className="font-mono text-[9px] uppercase tracking-widest text-muted mb-4">
+        <p className="font-mono text-[9px] uppercase tracking-widest text-muted mb-4 transition-colors duration-300 group-hover:text-ink/80">
           DIR: {project.category}
         </p>
         <p className="text-[13px] leading-relaxed text-muted mb-6">
           {project.description}
         </p>
       </div>
-      <div className="flex flex-wrap gap-2 border-t border-border/40 pt-3 mt-auto">
+      <div className="relative z-10 flex flex-wrap gap-2 border-t border-border/40 pt-3 mt-auto transition-colors duration-300 group-hover:border-accent/40">
         {project.tags.map((tag) => (
-          <span key={tag} className="font-mono text-[9px] font-bold uppercase tracking-widest text-accent transition-colors">
+          <span key={tag} className="font-mono text-[9px] font-bold uppercase tracking-widest text-accent transition-colors duration-300 group-hover:text-ink">
             /{tag}
           </span>
         ))}
@@ -92,28 +77,12 @@ export function OurWork() {
             </p>
           </div>
         </div>
-      </div>
-        
-      {/* Desktop Endless Marquee Container (lg and up) */}
-      <div className="relative overflow-hidden w-full hidden lg:block">
-        {/* Fading Edges */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-bg to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg to-transparent z-10 pointer-events-none" />
-        
-        <div className="flex w-max animate-marquee hover:[animation-play-state:paused] pb-6">
-          {[...PROJECTS, ...PROJECTS].map((project, idx) => (
-            <div key={`${project.id}-${idx}`} className="shrink-0 w-[380px] mr-6">
+
+        <div className="pb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          {PROJECTS.map((project) => (
+            <div key={project.id}>
               <ProjectCard project={project} />
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Mobile & Tablet Grid Container (below lg) */}
-      <div className="container lg:hidden">
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-4 pb-6">
-          {PROJECTS.map((project) => (
-            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>
