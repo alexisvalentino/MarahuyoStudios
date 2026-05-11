@@ -86,7 +86,7 @@ export function ContactForm() {
       />
       <Field
         name="message"
-        label="What are you building?"
+        label="What do you want to automate?"
         textarea
         rows={4}
         required
@@ -109,7 +109,7 @@ export function ContactForm() {
           </>
         ) : (
           <>
-            Start a project <ArrowRight size={16} className="arrow" />
+            Send Transmission <ArrowRight size={16} className="arrow" />
           </>
         )}
       </button>

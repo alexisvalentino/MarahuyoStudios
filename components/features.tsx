@@ -10,21 +10,21 @@ type Feature = {
 const ITEMS: Feature[] = [
   {
     num: "01",
-    title: "Next-Gen Mobile & Web.",
-    copy: "We architect scalable, lightning-fast applications using cutting-edge frameworks. Pixel-perfect on the outside, robust on the inside.",
-    bullets: ["Cross-platform scale", "High performance", "Future-proof tech"],
+    title: "AI Business Automation.",
+    copy: "Building custom workflows via n8n, Make, and Activepieces to replace repetitive, manual business processes.",
+    bullets: ["n8n & Make.com", "Workflow mapping", "Time-saving automation"],
   },
   {
     num: "02",
-    title: "Immersive UX/UI.",
-    copy: "Interfaces designed for the future. We blend striking aesthetics with cognitive design to create frictionless, hyper-engaging user journeys.",
-    bullets: ["Frictionless flows", "Striking aesthetics", "Cognitive design"],
+    title: "AI Support Architects.",
+    copy: "Training custom AI support bots on your company's knowledge base to handle tickets automatically 24/7.",
+    bullets: ["Voiceflow & Botpress", "Vector DBs (Pinecone)", "Autonomous agents"],
   },
   {
     num: "03",
-    title: "Scalable Architecture.",
-    copy: "Built to grow. We deploy cloud-native solutions and robust infrastructures that handle complexity with elegant simplicity.",
-    bullets: ["Cloud-native", "Robust security", "Enterprise scale"],
+    title: "AI Content & Sales Systems.",
+    copy: "Building content repurposing pipelines and AI-powered lead generation. We produce dynamic ads, graphic designs, and custom audio branding (music, jingles, voiceovers) tailored perfectly for your brand.",
+    bullets: ["Content engines", "Higgsfield & Runway", "Suno & ElevenLabs", "Meta ads workflows"],
   },
 ];
 
@@ -43,7 +43,7 @@ export function Features() {
                 Arsenal
               </p>
               <p className="text-[15px] font-medium leading-loose text-ink/70">
-                {["React", "Next.js", "TypeScript", "Swift", "Kotlin", "Python", "AWS", "Supabase", "Figma"].join(" • ")}
+                {["Claude 3", "OpenAI", "LangChain", "n8n", "Make", "Cursor", "Vercel AI SDK", "Voiceflow", "Pinecone", "Higgsfield", "Midjourney", "ElevenLabs"].join(" • ")}
               </p>
             </div>
           </div>

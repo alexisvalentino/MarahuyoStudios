@@ -42,7 +42,7 @@ export function Cta() {
                 Build the <span className="text-accent">Future.</span>
               </h2>
               <p className="mb-6 max-w-md text-lg text-bg/70 md:text-xl">
-                Ready to scale your digital presence? Tell us about your vision, and our architects will be in touch within 24 hours.
+                Ready to scale your business with AI? Tell us about the repetitive tasks you want to automate, and our architects will be in touch within 24 hours.
               </p>
               <div className="flex flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-[0.06em] text-bg/55">
                 <span>hello@marahuyo.studio</span>

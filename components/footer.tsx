@@ -45,7 +45,7 @@ export function Footer() {
             Marahuyo Studios<sup className="ml-0.5 text-[0.55em] text-muted">®</sup>
           </div>
           <p className="mt-4 max-w-[40ch] text-[15px] leading-relaxed text-muted">
-            Architecting the future of digital experiences. We engineer high-performance software for the next generation of startups and enterprises.
+            Architecting the future of digital experiences. We build AI-driven solutions, automated workflows, and scalable systems that replace repetitive processes for the next generation of businesses.
           </p>
         </div>
 

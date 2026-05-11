@@ -1,12 +1,12 @@
 const PARAGRAPHS = [
   <>
-    At <strong className="font-bold">Marahuyo Studios</strong>, we don&apos;t just build software; we engineer digital ecosystems. We specialize in crafting high-performance mobile and web applications that push the boundaries of modern design and technology.
+    At <strong className="font-bold">Marahuyo Studios</strong>, we don&apos;t just build software; we engineer autonomous digital ecosystems. As an AI-first agency, we specialize in building AI-powered workflows, support bots, and content systems that replace repetitive processes.
   </>,
   <>
-    Our team combines elite engineering expertise with visionary design thinking, transforming complex real-world problems into sleek, scalable, and intuitive solutions.
+    Our team combines elite technical expertise with cutting-edge agentic tools (like Claude, OpenAI, n8n, and LangChain) to transform complex real-world problems into sleek, automated, and infinitely scalable solutions.
   </>,
   <>
-    Ready to build the future? Let&apos;s turn your ambitious vision into a digital reality.
+    Ready to scale your business with AI? Let&apos;s automate your operations and turn your ambitious vision into reality.
   </>,
 ];
 

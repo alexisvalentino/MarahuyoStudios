@@ -5,23 +5,23 @@ import { TerrainGrid } from "./terrain-grid";
 const STEPS = [
   {
     num: "01",
-    title: "Discovery & Strategy",
-    copy: "We align on your vision, map the technical blueprint, and define the architecture for scale.",
+    title: "Strategy & Workflow Mapping",
+    copy: "We analyze your business to identify repetitive tasks, lead leaks, and areas ripe for AI automation and generative models.",
   },
   {
     num: "02",
-    title: "UI/UX Prototyping",
-    copy: "Visualizing the interface. We craft high-fidelity prototypes focused on cognitive design and frictionless flows.",
+    title: "AI Architecture & Training",
+    copy: "We architect the solution, integrating LLMs and training custom agents on your unique company knowledge base.",
   },
   {
     num: "03",
-    title: "Engineering",
-    copy: "Writing scalable, robust code. Our elite team builds the engine that powers your digital experience.",
+    title: "System Integration",
+    copy: "Using tools like n8n and Make, we build robust, automated pipelines connecting your existing tools and new AI brains.",
   },
   {
     num: "04",
     title: "Deployment & Scale",
-    copy: "Rigorous testing followed by a seamless launch. We ensure your product is ready for the real world.",
+    copy: "Rigorous testing of autonomous workflows followed by a seamless launch. Your AI ecosystem is ready to scale.",
   },
 ];
 

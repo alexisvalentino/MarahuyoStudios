@@ -6,9 +6,7 @@ import { ArrowRight } from "lucide-react";
 const LINKS = [
   { href: "#services", label: "Services" },
   { href: "#work", label: "Work" },
-  { href: "#process", label: "Process" },
   { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
 ] as const;
 
 export function Navigation() {
@@ -39,7 +37,7 @@ export function Navigation() {
   const scrollTimeoutRef = React.useRef<NodeJS.Timeout>();
 
   React.useEffect(() => {
-    const ids = ["top", "services", "work", "process", "about", "contact"];
+    const ids = ["top", "services", "work", "reviews", "process", "about", "contact"];
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
@@ -128,7 +126,7 @@ export function Navigation() {
             onClick={closeAnd("#contact")}
             className="btn btn-accent hidden min-[1034px]:inline-flex"
           >
-            Initiate Project <ArrowRight size={16} className="arrow" />
+            Initialize AI <ArrowRight size={16} className="arrow" />
           </a>
           <button
             type="button"
@@ -193,7 +191,7 @@ export function Navigation() {
               open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
             ].join(" ")}
           >
-            Initiate Project <ArrowRight size={16} className="arrow" />
+            Initialize AI <ArrowRight size={16} className="arrow" />
           </a>
         </nav>
       </div>

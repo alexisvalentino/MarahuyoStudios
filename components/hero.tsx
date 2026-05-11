@@ -32,12 +32,12 @@ export function Hero() {
           </h1>
 
           <p className="hero-subtitle mx-auto mb-6 sm:mb-8 max-w-[540px] lg:max-w-[720px] text-sm font-medium leading-[1.5] text-ink-2 [letter-spacing:-0.015em] sm:text-base md:text-lg lg:text-xl backdrop-blur-[1px] bg-bg/30 p-2 rounded-xl">
-            Architecting the future of digital experiences. We engineer high-performance software for the next generation of startups and enterprises.
+            Architecting the future of digital experiences. We build AI-driven solutions, automated workflows, and scalable systems that replace repetitive processes for the next generation of businesses.
           </p>
 
           <div className="hero-actions flex flex-wrap justify-center gap-3">
             <a href="#contact" className="btn btn-accent justify-center shadow-lg pointer-events-auto">
-              Initiate Project <ArrowRight size={16} className="arrow" />
+              Initialize AI <ArrowRight size={16} className="arrow" />
             </a>
             <a href="#work" className="btn btn-ghost justify-center backdrop-blur-md bg-bg/50 pointer-events-auto">
               View Portfolio <ArrowUpRight size={16} className="arrow" />
