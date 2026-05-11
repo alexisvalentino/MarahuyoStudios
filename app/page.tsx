@@ -6,7 +6,7 @@ import { OurWork } from "@/components/our-work";
 import { Process } from "@/components/process";
 import { Cta } from "@/components/cta";
 import { Footer } from "@/components/footer";
-import { Reviews } from "@/components/reviews";
+
 
 export default function HomePage() {
   return (
@@ -16,7 +16,7 @@ export default function HomePage() {
         <Hero />
         <Features />
         <OurWork />
-        <Reviews />
+
         <Process />
         <About />
         <Cta />

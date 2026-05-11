@@ -32,13 +32,13 @@ export function Features() {
   return (
     <section id="services" className="section-screen border-t border-border bg-bg">
       <div className="container">
-        <div className="flex flex-col gap-16 md:gap-24 lg:flex-row lg:justify-between">
+        <div className="flex flex-col gap-10 md:gap-16 lg:flex-row lg:justify-between">
           <div className="max-w-xl lg:max-w-md">
             <span className="mono-label mb-6 inline-block">{"// services"}</span>
             <h2 className="font-hero text-[clamp(30px,4vw,56px)] font-bold uppercase leading-tight tracking-wide text-ink">
               What we do <span className="text-accent">best.</span>
             </h2>
-            <div className="mt-12 md:mt-16">
+            <div className="mt-8 md:mt-12 lg:mt-16">
               <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-widest text-muted">
                 Arsenal
               </p>
@@ -48,7 +48,7 @@ export function Features() {
             </div>
           </div>
 
-          <div className="flex w-full max-w-xl flex-col gap-12 md:gap-16">
+          <div className="flex w-full flex-col md:grid md:grid-cols-2 lg:flex lg:flex-col gap-10 md:gap-8 lg:gap-16 lg:max-w-xl">
             {ITEMS.map((item) => (
               <article key={item.num} className="group">
                 <div className="mb-3 flex items-baseline gap-4">

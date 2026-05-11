@@ -48,6 +48,35 @@ const PROJECTS = [
   },
 ];
 
+function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
+  return (
+    <article className="group flex flex-col justify-between border border-accent p-5 transition-colors hover:bg-accent/5 h-full">
+      <div>
+        <div className="mb-4 flex justify-between">
+          <span className="font-mono text-[11px] font-bold text-accent">[{project.id.toUpperCase()}]</span>
+          <ArrowUpRight className="text-accent transition-colors group-hover:scale-110" size={16} />
+        </div>
+        <h3 className="text-lg font-bold uppercase tracking-tight text-ink mb-1.5">
+          {project.title}
+        </h3>
+        <p className="font-mono text-[9px] uppercase tracking-widest text-muted mb-4">
+          DIR: {project.category}
+        </p>
+        <p className="text-[13px] leading-relaxed text-muted mb-6">
+          {project.description}
+        </p>
+      </div>
+      <div className="flex flex-wrap gap-2 border-t border-border/40 pt-3 mt-auto">
+        {project.tags.map((tag) => (
+          <span key={tag} className="font-mono text-[9px] font-bold uppercase tracking-widest text-accent transition-colors">
+            /{tag}
+          </span>
+        ))}
+      </div>
+    </article>
+  );
+}
+
 export function OurWork() {
   return (
     <section id="work" className="section-screen border-t border-border bg-bg">
@@ -65,41 +94,26 @@ export function OurWork() {
         </div>
       </div>
         
-      {/* Endless Marquee Container */}
-      <div className="relative overflow-hidden w-full">
+      {/* Desktop Endless Marquee Container (lg and up) */}
+      <div className="relative overflow-hidden w-full hidden lg:block">
         {/* Fading Edges */}
-        <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-bg to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-bg to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-bg to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg to-transparent z-10 pointer-events-none" />
         
         <div className="flex w-max animate-marquee hover:[animation-play-state:paused] pb-6">
           {[...PROJECTS, ...PROJECTS].map((project, idx) => (
-            <article 
-              key={`${project.id}-${idx}`} 
-              className="shrink-0 w-[80vw] sm:w-[340px] md:w-[380px] mr-4 md:mr-6 group flex flex-col justify-between border border-accent p-5 transition-colors hover:bg-accent/5"
-            >
-              <div>
-                <div className="mb-4 flex justify-between">
-                  <span className="font-mono text-[11px] font-bold text-accent">[{project.id.toUpperCase()}]</span>
-                  <ArrowUpRight className="text-accent transition-colors group-hover:scale-110" size={16} />
-                </div>
-                <h3 className="text-lg font-bold uppercase tracking-tight text-ink mb-1.5">
-                  {project.title}
-                </h3>
-                <p className="font-mono text-[9px] uppercase tracking-widest text-muted mb-4">
-                  DIR: {project.category}
-                </p>
-                <p className="text-[13px] leading-relaxed text-muted mb-6">
-                  {project.description}
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-2 border-t border-border/40 pt-3 mt-auto">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="font-mono text-[9px] font-bold uppercase tracking-widest text-accent transition-colors">
-                    /{tag}
-                  </span>
-                ))}
-              </div>
-            </article>
+            <div key={`${project.id}-${idx}`} className="shrink-0 w-[380px] mr-6">
+              <ProjectCard project={project} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile & Tablet Grid Container (below lg) */}
+      <div className="container lg:hidden">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-4 pb-6">
+          {PROJECTS.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>

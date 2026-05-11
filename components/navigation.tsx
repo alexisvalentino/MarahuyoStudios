@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 const LINKS = [
   { href: "#services", label: "Services" },
   { href: "#work", label: "Work" },
+  { href: "#process", label: "Process" },
   { href: "#about", label: "About" },
 ] as const;
 
@@ -37,24 +38,40 @@ export function Navigation() {
   const scrollTimeoutRef = React.useRef<NodeJS.Timeout>();
 
   React.useEffect(() => {
-    const ids = ["top", "services", "work", "reviews", "process", "about", "contact"];
-    const sections = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null);
-    if (sections.length === 0) return;
+    const handleScroll = () => {
+      if (isScrollingRef.current) return;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (isScrollingRef.current) return;
-        
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: "-100px 0px -60% 0px", threshold: 0 }
-    );
-    sections.forEach((s) => io.observe(s));
-    return () => io.disconnect();
+      const ids = ["top", "services", "work", "process", "about", "contact"];
+      const sections = ids
+        .map((id) => document.getElementById(id))
+        .filter((el): el is HTMLElement => el !== null);
+
+      if (sections.length === 0) return;
+
+      let currentActive = "top";
+      // Trigger when the top of the section crosses the middle of the viewport
+      const focusPoint = window.innerHeight / 2;
+
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= focusPoint) {
+          currentActive = section.id;
+        }
+      }
+
+      // Safe bottom of page check
+      const isBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10;
+      if (isBottom) {
+        currentActive = sections[sections.length - 1].id;
+      }
+
+      setActive(currentActive);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Trigger once on mount
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const closeAnd = (href: string) => () => {
@@ -170,19 +187,23 @@ export function Navigation() {
           ].join(" ")}
           aria-label="Mobile"
         >
-          {LINKS.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={closeAnd(l.href)}
-              className={[
-                "border-b border-border py-3 text-lg font-medium transition-all duration-300 ease-out",
-                open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
-              ].join(" ")}
-            >
-              {l.label}
-            </a>
-          ))}
+          {LINKS.map((l) => {
+            const isActive = active === l.href.slice(1);
+            return (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={closeAnd(l.href)}
+                className={[
+                  "border-b border-border py-3 text-lg font-medium transition-all duration-300 ease-out",
+                  open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
+                  isActive ? "text-accent" : "text-ink hover:text-accent",
+                ].join(" ")}
+              >
+                {l.label}
+              </a>
+            );
+          })}
           <a
             href="#contact"
             onClick={closeAnd("#contact")}
